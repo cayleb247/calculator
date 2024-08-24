@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calc-body {
+    display: flex;
+    background-color: grey;
+    height: 500px;
+    width: 400px;
+    border-radius: 20px;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+}
+
+.btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    align-content: flex-start;
+}
+
+.display {
+    height: 100px;
+    width: 350px;
+    background-color: black;
+    margin-bottom: 35px;
+    color: white;
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 75px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 20px 0 20px;
+
+}
+
+.button.operator{
+    height: 80px;
+    width: 80px;
+    margin: 5px;
+    background-color: #ff9900;
+    border: 0;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 20px;
+    border-radius: 10px;
+    color: white
+}
+
+.button.num{
+    height: 80px;
+    width: 80px;
+    margin: 5px;
+    background-color: white;
+    border: 0;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.button.misc{
+    height: 80px;
+    width: 80px;
+    margin: 5px;
+    background-color: #80dfff;
+    border: 0;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 20px;
+    border-radius: 10px;
+    color: white
+}

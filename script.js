@@ -21,10 +21,6 @@ let firstNum;
 let operator;
 
 let secondNum;
-
-const isOperator = (element) => {
-    return element == "+" || element == "-" || element == "x" || element == "/"
-}
     
 
 const display = document.querySelector(".display");

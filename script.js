@@ -14,6 +14,7 @@ const divide = function(a, b) {
     return a / b;
 }
 
+// For determining whether the next number will be evaluated as the first or second number
 let secnumOn = 0;
 
 let firstNum;
@@ -21,6 +22,9 @@ let firstNum;
 let operator;
 
 let secondNum;
+
+// For determining whether the operator used will be evaluated as the first operator in an expression
+let firstOperator = 1;
     
 
 const display = document.querySelector(".display");
@@ -32,6 +36,7 @@ oneBtn.addEventListener("click", () => {
     } else {
         display.textContent = "";
         display.textContent = display.textContent + "1";
+        secnumOn = 0;
     }
 })
 
@@ -42,6 +47,7 @@ twoBtn.addEventListener("click", () => {
     } else {
         display.textContent = "";
         display.textContent = display.textContent + "2";
+        secnumOn = 0;
     }
 })
 
@@ -52,6 +58,7 @@ threeBtn.addEventListener("click", () => {
     } else {
         display.textContent = "";
         display.textContent = display.textContent + "3";
+        secnumOn = 0;
     }
 })
 
@@ -62,6 +69,7 @@ fourBtn.addEventListener("click", () => {
     } else {
         display.textContent = "";
         display.textContent = display.textContent + "4";
+        secnumOn = 0;
     }
 })
 
@@ -72,6 +80,7 @@ fiveBtn.addEventListener("click", () => {
     } else {
         display.textContent = "";
         display.textContent = display.textContent + "5";
+        secnumOn = 0;
     }
 })
 
@@ -82,6 +91,7 @@ sixBtn.addEventListener("click", () => {
     } else {
         display.textContent = "";
         display.textContent = display.textContent + "6";
+        secnumOn = 0;
     }
 })
 
@@ -92,6 +102,7 @@ sevenBtn.addEventListener("click", () => {
     } else {
         display.textContent = "";
         display.textContent = display.textContent + "7";
+        secnumOn = 0;
     }
 })
 
@@ -102,6 +113,7 @@ eightBtn.addEventListener("click", () => {
     } else {
         display.textContent = "";
         display.textContent = display.textContent + "8";
+        secnumOn = 0;
     }
 })
 
@@ -112,6 +124,7 @@ nineBtn.addEventListener("click", () => {
     } else {
         display.textContent = "";
         display.textContent = display.textContent + "9";
+        secnumOn = 0;
     }
 })
 
@@ -122,6 +135,7 @@ zeroBtn.addEventListener("click", () => {
     } else {
         display.textContent = "";
         display.textContent = display.textContent + "0";
+        secnumOn = 0;
     }
 })
 
@@ -130,6 +144,7 @@ clearBtn.addEventListener("click", () => {
     firstNum = "";
     secondNum = "";
     operator = "";
+    firstOperator = 1;
 
     display.textContent = "";
     secnumOn = 0;
@@ -138,84 +153,131 @@ clearBtn.addEventListener("click", () => {
 const addBtn = document.querySelectorAll(".button.operator")[0]
 addBtn.addEventListener("click", () => {
     
-    if (secnumOn == 1) {
+    // If add is not the first operator
+    if (firstOperator == 0) {
         secondNum = +display.textContent;
         display.textContent = operate(firstNum, secondNum, operator);
+        if (operate(firstNum, secondNum, operator) == NaN) {
+            display.textContent = "ERROR";
+        } else if (display.textContent == "Infinity") {
+            display.textContent = "Nah man."
+        } else if (!Number.isInteger(display.textContent)) {
+            display.textContent = Math.floor(+display.textContent * 1000000) / 1000000
+        }
         firstNum = +display.textContent;
+        display.textContent = display.textContent + "+";
+        secnumOn = 1;
         operator = "+";
     } else {
         operator = "+";
         firstNum = +display.textContent;
         display.textContent = display.textContent + "+";
         secnumOn = 1;
+        firstOperator = 0;
     }
 })
 
 const subBtn = document.querySelectorAll(".button.operator")[1]
 subBtn.addEventListener("click", () => {
-    if (secnumOn == 1) {
+
+    // If sub is not the first operator
+    if (firstOperator == 0) {
         secondNum = +display.textContent;
         display.textContent = operate(firstNum, secondNum, operator);
+        if (operate(firstNum, secondNum, operator) == NaN) {
+            display.textContent = "ERROR";
+        } else if (display.textContent == "Infinity") {
+            display.textContent = "Nah man."
+        } else if (!Number.isInteger(display.textContent)) {
+            display.textContent = Math.floor(+display.textContent * 1000000) / 1000000
+        }
         firstNum = +display.textContent;
+        display.textContent = display.textContent + "-";
+        secnumOn = 1;
         operator = "-";
     } else {
         operator = "-";
         firstNum = +display.textContent;
         display.textContent = display.textContent + "-";
         secnumOn = 1;
+        firstOperator = 0;
     }
 })
 
 const multBtn = document.querySelectorAll(".button.operator")[2]
 multBtn.addEventListener("click", () => {
-    if (secnumOn == 1) {
+
+    // If mult is not the first operator
+    if (firstOperator == 0) {
         secondNum = +display.textContent;
         display.textContent = operate(firstNum, secondNum, operator);
+        if (operate(firstNum, secondNum, operator) == NaN) {
+            display.textContent = "ERROR";
+        } else if (display.textContent == "Infinity") {
+            display.textContent = "Nah man."
+        } else if (!Number.isInteger(display.textContent)) {
+            display.textContent = Math.floor(+display.textContent * 1000000) / 1000000
+        }
         firstNum = +display.textContent;
+        display.textContent = display.textContent + "x";
+        secnumOn = 1;
         operator = "x";
     } else {
         operator = "x";
         firstNum = +display.textContent;
         display.textContent = display.textContent + "x";
         secnumOn = 1;
+        firstOperator = 0;
     }
 })
 
 const divideBtn = document.querySelectorAll(".button.operator")[4]
 divideBtn.addEventListener("click", () => {
-    if (secnumOn == 1) {
+
+    // If divide is not the first operator
+    if (firstOperator == 0) {
         secondNum = +display.textContent;
         display.textContent = operate(firstNum, secondNum, operator);
+        if (operate(firstNum, secondNum, operator) == NaN) {
+            display.textContent = "ERROR";
+        } else if (display.textContent == "Infinity") {
+            display.textContent = "Nah man."
+        } else if (!Number.isInteger(display.textContent)) {
+            display.textContent = Math.floor(+display.textContent * 1000000) / 1000000
+        }
         firstNum = +display.textContent;
+        display.textContent = display.textContent + "/";
+        secnumOn = 1;
         operator = "/";
     } else {
         operator = "/";
         firstNum = +display.textContent;
         display.textContent = display.textContent + "/";
         secnumOn = 1;
+        firstOperator = 0;
     }
 })
 
 const equalBtn = document.querySelectorAll(".button.operator")[3]
 equalBtn.addEventListener("click", () => {
+    firstOperator = 0;
     secondNum = +display.textContent;
+    secnumOn = 0
     display.textContent = operate(firstNum, secondNum, operator);
-    secnumOn = 0;
+    
     if (display.textContent == "NaN") {
         display.textContent = "ERROR";
+    } else if (display.textContent == "Infinity") {
+        display.textContent = "Nah man."
     } else if (!Number.isInteger(display.textContent)) {
         display.textContent = Math.floor(+display.textContent * 1000000) / 1000000
     }
 })
 
-
-
-
 const operate = function(a, b, operator) {
     return operator == "+" ? add(a, b)
         : operator == "-" ? sub(a,b)
         : operator == "x" ? mult(a, b)
-        : operator == "/" && b == 0 ? "Nah man."
         : divide(a, b)
 }
     
